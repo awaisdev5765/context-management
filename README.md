@@ -2,7 +2,7 @@
 
 **A universal, open-source skill that teaches any AI coding agent (and any human) how to run AI coding sessions that actually work: perfect briefs, context budgets, handoff documents, and lossless compaction.**
 
-[![Works with](https://img.shields.io/badge/works%20with-Claude%20Code%20·%20Cursor%20·%20Copilot%20·%20ChatGPT%20·%20Gemini%20·%20pi-blue)](#install)
+[![Works with](https://img.shields.io/badge/works%20with-Claude%20Code%20·%20Cursor%20·%20Copilot%20·%20ChatGPT%20·%20Gemini%20·%20pi-blue)](#how-to-use)
 
 ## Why this exists
 
@@ -10,7 +10,42 @@ Every failed AI coding session fails the same way: missing files, paraphrased er
 
 This skill fixes the *process*, so it works on every AI tool — today and in the future.
 
-## What it gives you
+## How to use
+
+### ⚡ 30-second version (no install needed — works in ANY chat)
+1. **Starting a task?** Fill [`templates/SESSION_BRIEF.md`](templates/SESSION_BRIEF.md) and paste it as your first message.
+2. **Chat is long and drifting?** Paste [`templates/COMPACTION_PROMPT.md`](templates/COMPACTION_PROMPT.md) — its output is the state you carry into the next chat.
+3. **Working across days on a repo?** Keep [`templates/SESSION.md`](templates/SESSION.md) in the repo root and tell every AI: *"Read SESSION.md first."*
+4. **Session died mid-task?** SESSION.md IS the recovery — the next agent picks up exactly where this one stopped.
+
+That's it. The templates work on ChatGPT, Claude, Gemini, Copilot, Cursor — anywhere.
+
+### 🔧 Full install (the AI follows the skill automatically)
+
+**pi**
+```bash
+git clone https://github.com/awaisdev5765/context-management ~/.agents/skills/context-management
+```
+The skill activates automatically whenever a session is planned, started, continued, or running long.
+
+**Claude Code**
+Add to your project's CLAUDE.md:
+```
+- Follow the context-management skill: see context-management/SKILL.md
+```
+Or copy SKILL.md into `.claude/skills/context-management/SKILL.md`.
+
+**Cursor / Windsurf**
+Paste the rules you want into `.cursor/rules/context-management.mdc` — each Part is self-contained. (Settings → Rules → Add rule also works.)
+
+**ChatGPT / Gemini (browser)**
+Paste Part 1 (The Perfect Brief) and Part 5 (Compaction) into Custom Instructions. The skill is modular — each part works alone.
+
+### 🎯 The two habits that matter most
+- **Disk is truth** — point the AI at file paths, never re-paste files into the chat.
+- **Two failed attempts on the same bug?** Stop. New session + SESSION.md handoff. Pushing through makes it worse.
+
+## What the skill contains
 
 | Part | What | The problem it kills |
 |---|---|---|
@@ -22,30 +57,7 @@ This skill fixes the *process*, so it works on every AI tool — today and in th
 | 6 | **Anti-patterns** — 7 common failure patterns with fixes | Repeating the same mistakes |
 | 7 | **Quick reference card** — the whole skill on one screen | Forgetting it when it matters |
 
-## Install
-
-### pi
-```bash
-git clone https://github.com/YOUR_USER/context-management ~/.agents/skills/context-management
-```
-That's it — the skill activates automatically when relevant.
-
-### Claude Code
-Copy `SKILL.md` content into a project `CLAUDE.md` (or reference it there), or place it in your `.claude/skills/context-management/SKILL.md`.
-
-### Cursor / Windsurf / any rules-based tool
-Copy the rules you want into `.cursor/rules/context-management.mdc` — each Part is self-contained.
-
-### ChatGPT / Gemini / any chat AI
-Paste the compaction prompt (Part 5) and the brief template (Part 1) into custom instructions. The skill is modular — each part works alone.
-
-## The 60-second version
-
-1. **Brief every task**: Goal + Done-when + Stack/paths + Constraints + verbatim errors + working agreement
-2. **Disk is truth** — point at file paths, don't re-paste files
-3. **Two failed attempts on the same bug?** Stop. New session + handoff document.
-4. **Keep a `SESSION.md`** in every repo — the next agent reads it and is oriented in seconds
-5. **Compact long sessions** with the Part 5 prompt — preserve errors verbatim, decisions, and mid-flight state
+Full skill: [SKILL.md](SKILL.md) · Templates: [`templates/`](templates/)
 
 ## Contributing
 
